@@ -39,5 +39,5 @@ ionic cordova plugin add cordova-plugin-compat
 
 ( for cordova permision helper )
 
-ionic build andorid
+ionic cordova build andorid
 ```
