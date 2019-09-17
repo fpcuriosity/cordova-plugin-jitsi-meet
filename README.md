@@ -1,15 +1,15 @@
 # cordova-plugin-jitsi-meet
-Cordova plugin for jitsi meet react native sdk
+Cordova plugin for jitsi meet native sdk
 
 ---
 
 ## update note
 
-permision helper added ( for android ) / 2018-11-27
+permision helper added ( for android ) 
 
 ## how to use
 
-var room_url = 'https://meet.jit.si/room_name';
+let room_url = 'https://meet.jit.si/room_name';
 
 ```javascript
 plugins.JitsiPlugin.loadURL(room_url, null, function(data) {
