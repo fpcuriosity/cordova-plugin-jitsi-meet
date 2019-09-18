@@ -17,7 +17,6 @@ import android.os.Bundle;
 
 import org.jitsi.meet.sdk.JitsiMeetView;
 import org.jitsi.meet.sdk.JitsiMeetViewListener;
-import org.jitsi.meet.sdk.ReactActivityLifecycleCallbacks;
 import android.view.View;
 
 import org.apache.cordova.CordovaWebView;
@@ -26,7 +25,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
-public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInterface {
+public class JitsiPlugin extends CordovaPlugin {
   private JitsiMeetView view;
   private static final String TAG = "cordova-plugin-jitsi";
 
