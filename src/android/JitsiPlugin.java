@@ -111,15 +111,17 @@ public class JitsiPlugin extends CordovaPlugin {
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {       
         Context context = cordova.getActivity();
-        view = new JitsiMeetView(context);
+        
       //  Initialize default options for Jitsi Meet conferences.
-//         URL serverURL;
-//         try {
-//             serverURL = new URL(url);
-//         } catch (MalformedURLException e) {
-//             e.printStackTrace();
-//             throw new RuntimeException("Invalid server URL!");
-//         }
+        URL serverURL;
+        try {
+          view = new JitsiMeetView(context);
+            serverURL = new URL(url);
+        } catch (Exception e) {
+//           MalformedURLException e,
+            e.printStackTrace();
+            throw new RuntimeException("Invalid server URL!",e.getMessage());
+        }
         
 //         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
 //           .setServerURL(serverURL)
