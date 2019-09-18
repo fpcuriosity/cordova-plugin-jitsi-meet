@@ -31,6 +31,7 @@ import org.apache.cordova.CordovaWebView;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import com.facebook.react.modules.core.PermissionListener;
 
 public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInterface{
   private JitsiMeetView view;
@@ -222,4 +223,16 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
     }
   }
   
+   @Override
+    public void onRequestPermissionsResult(
+            final int requestCode,
+            final String[] permissions,
+            final int[] grantResults) {
+        JitsiMeetActivityDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+  
+   @Override
+    public void requestPermissions(String[] permissions, int requestCode, PermissionListener listener) {
+        JitsiMeetActivityDelegate.requestPermissions(this, permissions, requestCode, listener);
+    }
 }
