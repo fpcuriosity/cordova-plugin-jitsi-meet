@@ -20,6 +20,7 @@ import org.jitsi.meet.sdk.JitsiMeetViewListener;
 import org.jitsi.meet.sdk.JitsiMeet;
 import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
+import org.jitsi.meet.sdk.JitsiMeetActivityDelegate;
 import android.view.View;
 
 import org.apache.cordova.CordovaWebView;
@@ -191,7 +192,8 @@ public class JitsiPlugin extends CordovaPlugin {
       public void run() {
         view.dispose();
         view = null;
-        JitsiMeetView.onHostDestroy(cordova.getActivity());
+        //JitsiMeetView.onHostDestroy(cordova.getActivity());
+        JitsiMeetActivityDelegate.onHostDestroy(cordova.getActivity()));
         cordova.getActivity().setContentView(getView());
         PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "DESTROYED");
         pluginResult.setKeepCallback(true);
