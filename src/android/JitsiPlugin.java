@@ -102,6 +102,10 @@ public class JitsiPlugin extends CordovaPlugin {
   private void loadURL(final String url, final String key, final CallbackContext callbackContext) {
     Log.e(TAG, "loadURL called : "+url);
 
+    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "INIT"+url+"/"+key);
+        pluginResult.setKeepCallback(true);
+        callbackContext.sendPluginResult(pluginResult);
+    
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {
 //         view = new JitsiMeetView(cordova.getActivity());
@@ -201,8 +205,8 @@ public class JitsiPlugin extends CordovaPlugin {
   private void destroy(final CallbackContext callbackContext) {
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {
-        view.dispose();
-        view = null;
+        //view.dispose();
+        //view = null;
         //JitsiMeetView.onHostDestroy(cordova.getActivity());
         JitsiMeetActivityDelegate.onHostDestroy(cordova.getActivity());
         cordova.getActivity().setContentView(getView());
