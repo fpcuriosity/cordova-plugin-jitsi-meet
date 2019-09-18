@@ -245,5 +245,10 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
     public int checkSelfPermission(String permission) {
         return 0;
     }
+    
+    @Override
+    public int checkPermission(String permission, int pid, int uid) {
+        return 0;
+    }
   
 }
