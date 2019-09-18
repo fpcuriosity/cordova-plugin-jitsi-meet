@@ -100,7 +100,7 @@ public class JitsiPlugin extends CordovaPlugin {
   }
 
   private void loadURL(final String url, final String key, final CallbackContext callbackContext) {
-    Log.e(TAG, "loadURL called");
+    Log.e(TAG, "loadURL called : "+url);
 
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {
