@@ -275,10 +275,10 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
   }
   
   @Override
-    public void onRequestPermissionsResult(
-            final int requestCode,
-            final String[] permissions,
-            final int[] grantResults) {
-        JitsiMeetActivityDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+  public void onRequestPermissionsResult(
+          final int requestCode,
+          final String[] permissions,
+          final int[] grantResults) {
+      JitsiMeetActivityDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
+  }
 }
