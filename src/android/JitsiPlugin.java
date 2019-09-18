@@ -226,15 +226,6 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
     }
   }
 
-  @Override
-    protected void onActivityResult(
-            int requestCode,
-            int resultCode,
-            Intent data) {
-        JitsiMeetActivityDelegate.onActivityResult(
-                this, requestCode, resultCode, data);
-    }
-
     @Override
     public void onBackPressed() {
         JitsiMeetActivityDelegate.onBackPressed();
@@ -268,13 +259,6 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
         JitsiMeetActivityDelegate.onNewIntent(intent);
     }
 
-    @Override
-    public void onRequestPermissionsResult(
-            final int requestCode,
-            final String[] permissions,
-            final int[] grantResults) {
-        JitsiMeetActivityDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
 
     @Override
     protected void onResume() {
