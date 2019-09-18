@@ -29,7 +29,12 @@ android {
 		    exclude '/lib/x86_64/**'
 		}
 	}
-
+	
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+	
 	dexOptions {
         	jumboMode = true
     	}
