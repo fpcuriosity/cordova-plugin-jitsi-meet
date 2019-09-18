@@ -32,7 +32,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
-public class JitsiPlugin extends CordovaPlugin {
+public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInterface{
   private JitsiMeetView view;
   private static final String TAG = "cordova-plugin-jitsi";
 
