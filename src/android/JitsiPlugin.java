@@ -46,7 +46,7 @@ public class JitsiPlugin extends CordovaPlugin {
     // in AndroidManifest.xml. This plugin does not declare it, but others may and so we must
     // check the package info to determine if the permission is present.
 
-    checkPermission();
+    //checkPermission();
 
     if (action.equals("loadURL")) {
       String url = args.getString(0);
