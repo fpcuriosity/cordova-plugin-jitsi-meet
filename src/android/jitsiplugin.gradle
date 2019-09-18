@@ -41,12 +41,12 @@ android {
 }
 dependencies {
 //org.jitsi.react:jitsi-meet-sdk:2.+ org.jitsi.react:jitsi-meet-sdk:1.9.0@aar
-	implementation ('org.jitsi.react:jitsi-meet-sdk:2.+') {
+	compile  ('org.jitsi.react:jitsi-meet-sdk:2.+') {
 		transitive = true;
 	}
 
 	//implementation "com.android.support:appcompat-v7:27.1.0"	
-	implementation "com.android.support:appcompat-v7:27.0.2"
-	implementation "com.android.support:recyclerview-v7:27.0.2"
-	implementation "com.android.support:design-v7:27.1.0"
+	compile  "com.android.support:appcompat-v7:27.1.0"
+	compile  "com.android.support:recyclerview-v7:27.1.0"
+	compile  "com.android.support:design:27.1.0"
 }
