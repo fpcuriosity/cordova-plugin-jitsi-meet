@@ -45,7 +45,8 @@ dependencies {
 		transitive = true;
 	}
 
-	implementation "com.android.support:appcompat-v7:27.1.0"
-	implementation "com.android.support:recyclerview-v7:27.1.0"
-	implementation "com.android.support:design:27.1.0"
+	//implementation "com.android.support:appcompat-v7:27.1.0"	
+	implementation "com.android.support:appcompat:$version"
+	implementation "com.android.support:recyclerview:$version"
+	implementation "com.android.support:design:$version"
 }
