@@ -233,6 +233,6 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
   
    @Override
     public void requestPermissions(String[] permissions, int requestCode, PermissionListener listener) {
-        JitsiMeetActivityDelegate.requestPermissions(this, permissions, requestCode, listener);
+        JitsiMeetActivityDelegate.requestPermissions(cordova.getActivity(), permissions, requestCode, listener);
     }
 }
