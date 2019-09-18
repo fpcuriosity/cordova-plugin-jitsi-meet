@@ -193,7 +193,7 @@ public class JitsiPlugin extends CordovaPlugin {
         view.dispose();
         view = null;
         //JitsiMeetView.onHostDestroy(cordova.getActivity());
-        JitsiMeetActivityDelegate.onHostDestroy(cordova.getActivity()));
+        JitsiMeetActivityDelegate.onHostDestroy(cordova.getActivity());
         cordova.getActivity().setContentView(getView());
         PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "DESTROYED");
         pluginResult.setKeepCallback(true);
