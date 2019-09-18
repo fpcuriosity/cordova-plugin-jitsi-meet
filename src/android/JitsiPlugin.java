@@ -31,7 +31,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
-public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInterface{
+public class JitsiPlugin extends CordovaPlugin {
   private JitsiMeetView view;
   private static final String TAG = "cordova-plugin-jitsi";
 
@@ -225,65 +225,5 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
       return (View) webView;
     }
   }
-
-  @Override
-  public void onBackPressed() {
-      JitsiMeetActivityDelegate.onBackPressed();
-  }
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-
-      view = new JitsiMeetView(this);
-      JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-          .setRoom("https://meet.jit.si/test123")
-          .build();
-      view.join(options);
-
-      setContentView(view);
-  }
-
-  @Override
-  protected void onDestroy() {
-      super.onDestroy();
-
-      view.dispose();
-      view = null;
-
-      JitsiMeetActivityDelegate.onHostDestroy(this);
-  }
-
-  @Override
-  public void onNewIntent(Intent intent) {
-      JitsiMeetActivityDelegate.onNewIntent(intent);
-  }
-
-
-  @Override
-  protected void onResume() {
-      super.onResume();
-
-      JitsiMeetActivityDelegate.onHostResume(this);
-  }
-
-  @Override
-  protected void onStop() {
-      super.onStop();
-
-      JitsiMeetActivityDelegate.onHostPause(this);
-  }
   
-  @Override
-  public void onRequestPermissionsResult(
-          final int requestCode,
-          final String[] permissions,
-          final int[] grantResults) {
-      JitsiMeetActivityDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
-  }
-  
-    @Override
-    public void requestPermissions(String[] permissions, int requestCode, PermissionListener listener) {
-
-    }
 }
