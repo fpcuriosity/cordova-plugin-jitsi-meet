@@ -116,7 +116,7 @@ public class JitsiPlugin extends CordovaPlugin {
         } catch (Exception e) {
 //           MalformedURLException e,
             e.printStackTrace();
-            throw new RuntimeException("Invalid server URL!",e.getMessage());
+            throw new RuntimeException("Invalid server URL!");
         }
         
         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
@@ -138,7 +138,7 @@ public class JitsiPlugin extends CordovaPlugin {
 //         urlObject.putBundle("config", config);
 //         urlObject.putString("url", url);
 //         view.loadURLObject(urlObject);
-            context.setContentView(view);
+            cordova.getActivity().setContentView(view);
 //         JitsiMeetActivity.launch(cordova.getActivity(), options);
       }
     });
