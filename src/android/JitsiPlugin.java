@@ -121,9 +121,6 @@ public class JitsiPlugin extends CordovaPlugin {
         
         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()          
           .setRoom(url)
-          .setAudioMuted(false)
-          .setVideoMuted(true)
-          .setAudioOnly(false)
           .setWelcomePageEnabled(false)
           .build();
                 
