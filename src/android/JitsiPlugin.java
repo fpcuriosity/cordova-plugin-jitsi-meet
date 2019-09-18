@@ -119,8 +119,7 @@ public class JitsiPlugin extends CordovaPlugin {
             throw new RuntimeException("Invalid server URL!");
         }
         
-        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-          .setServerURL(serverURL)
+        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()          
           .setRoom(url)
           .setAudioMuted(false)
           .setVideoMuted(true)
