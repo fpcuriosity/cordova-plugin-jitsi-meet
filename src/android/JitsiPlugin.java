@@ -237,8 +237,8 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
     }
   
     @Override
-    public void shouldShowRequestPermissionRationale(String permissions) {
-        
+    public boolean shouldShowRequestPermissionRationale(String permissions) {
+        return true;
     }
 
 }
