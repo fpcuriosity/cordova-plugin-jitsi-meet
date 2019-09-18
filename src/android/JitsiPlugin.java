@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import java.util.Map;
-
+import java.net.URL;
 import android.os.Bundle;
 
 import org.jitsi.meet.sdk.JitsiMeetView;
