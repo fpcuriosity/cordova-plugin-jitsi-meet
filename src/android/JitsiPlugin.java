@@ -127,86 +127,86 @@ public class JitsiPlugin extends CordovaPlugin {
     });
   }
 
-  private void setJitsiListener(JitsiMeetView view, final CallbackContext callbackContext) {
+//   private void setJitsiListener(JitsiMeetView view, final CallbackContext callbackContext) {
 
-    view.setListener(new JitsiMeetViewListener() {
-      PluginResult pluginResult;
+//     view.setListener(new JitsiMeetViewListener() {
+//       PluginResult pluginResult;
 
-      private void on(String name, Map<String, Object> data) {
-        Log.d("ReactNative", JitsiMeetViewListener.class.getSimpleName() + " " + name + " " + data);
-      }
+//       private void on(String name, Map<String, Object> data) {
+//         Log.d("ReactNative", JitsiMeetViewListener.class.getSimpleName() + " " + name + " " + data);
+//       }
 
-      @Override
-      public void onConferenceFailed(Map<String, Object> data) {
-        on("CONFERENCE_FAILED", data);
-        pluginResult = new PluginResult(PluginResult.Status.OK, new JSONObject(data));
-        pluginResult.setKeepCallback(true);
-        callbackContext.sendPluginResult(pluginResult);
-      }
+//       @Override
+//       public void onConferenceFailed(Map<String, Object> data) {
+//         on("CONFERENCE_FAILED", data);
+//         pluginResult = new PluginResult(PluginResult.Status.OK, new JSONObject(data));
+//         pluginResult.setKeepCallback(true);
+//         callbackContext.sendPluginResult(pluginResult);
+//       }
 
-      @Override
-      public void onConferenceJoined(Map<String, Object> data) {
-        on("CONFERENCE_JOINED", data);
-        pluginResult = new PluginResult(PluginResult.Status.OK, "CONFERENCE_JOINED");
-        pluginResult.setKeepCallback(true);
-        callbackContext.sendPluginResult(pluginResult);
-      }
+//       @Override
+//       public void onConferenceJoined(Map<String, Object> data) {
+//         on("CONFERENCE_JOINED", data);
+//         pluginResult = new PluginResult(PluginResult.Status.OK, "CONFERENCE_JOINED");
+//         pluginResult.setKeepCallback(true);
+//         callbackContext.sendPluginResult(pluginResult);
+//       }
 
-      @Override
-      public void onConferenceLeft(Map<String, Object> data) {
-        on("CONFERENCE_LEFT", data);
-        pluginResult = new PluginResult(PluginResult.Status.OK, "CONFERENCE_LEFT");
-        pluginResult.setKeepCallback(true);
-        callbackContext.sendPluginResult(pluginResult);
-      }
+//       @Override
+//       public void onConferenceLeft(Map<String, Object> data) {
+//         on("CONFERENCE_LEFT", data);
+//         pluginResult = new PluginResult(PluginResult.Status.OK, "CONFERENCE_LEFT");
+//         pluginResult.setKeepCallback(true);
+//         callbackContext.sendPluginResult(pluginResult);
+//       }
 
-      @Override
-      public void onConferenceWillJoin(Map<String, Object> data) {
-        on("CONFERENCE_WILL_JOIN", data);
-        pluginResult = new PluginResult(PluginResult.Status.OK, "CONFERENCE_WILL_JOIN");
-        pluginResult.setKeepCallback(true);
-        callbackContext.sendPluginResult(pluginResult);
-      }
+//       @Override
+//       public void onConferenceWillJoin(Map<String, Object> data) {
+//         on("CONFERENCE_WILL_JOIN", data);
+//         pluginResult = new PluginResult(PluginResult.Status.OK, "CONFERENCE_WILL_JOIN");
+//         pluginResult.setKeepCallback(true);
+//         callbackContext.sendPluginResult(pluginResult);
+//       }
 
-      @Override
-      public void onConferenceWillLeave(Map<String, Object> data) {
-        on("CONFERENCE_WILL_LEAVE", data);
-        pluginResult = new PluginResult(PluginResult.Status.OK, "CONFERENCE_WILL_LEAVE");
-        pluginResult.setKeepCallback(true);
-        callbackContext.sendPluginResult(pluginResult);
-      }
+//       @Override
+//       public void onConferenceWillLeave(Map<String, Object> data) {
+//         on("CONFERENCE_WILL_LEAVE", data);
+//         pluginResult = new PluginResult(PluginResult.Status.OK, "CONFERENCE_WILL_LEAVE");
+//         pluginResult.setKeepCallback(true);
+//         callbackContext.sendPluginResult(pluginResult);
+//       }
 
-      @Override
-      public void onLoadConfigError(Map<String, Object> data) {
-        on("LOAD_CONFIG_ERROR", data);
-        pluginResult = new PluginResult(PluginResult.Status.OK, "LOAD_CONFIG_ERROR");
-        pluginResult.setKeepCallback(true);
-        callbackContext.sendPluginResult(pluginResult);
-      }
-    });
-  }
+//       @Override
+//       public void onLoadConfigError(Map<String, Object> data) {
+//         on("LOAD_CONFIG_ERROR", data);
+//         pluginResult = new PluginResult(PluginResult.Status.OK, "LOAD_CONFIG_ERROR");
+//         pluginResult.setKeepCallback(true);
+//         callbackContext.sendPluginResult(pluginResult);
+//       }
+//     });
+//   }
 
-  private void destroy(final CallbackContext callbackContext) {
-    cordova.getActivity().runOnUiThread(new Runnable() {
-      public void run() {
-        view.dispose();
-        view = null;
-        JitsiMeetView.onHostDestroy(cordova.getActivity());
-        cordova.getActivity().setContentView(getView());
-        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "DESTROYED");
-        pluginResult.setKeepCallback(true);
-        callbackContext.sendPluginResult(pluginResult);
-      }
-    });
-  }
+//   private void destroy(final CallbackContext callbackContext) {
+//     cordova.getActivity().runOnUiThread(new Runnable() {
+//       public void run() {
+//         view.dispose();
+//         view = null;
+//         JitsiMeetView.onHostDestroy(cordova.getActivity());
+//         cordova.getActivity().setContentView(getView());
+//         PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "DESTROYED");
+//         pluginResult.setKeepCallback(true);
+//         callbackContext.sendPluginResult(pluginResult);
+//       }
+//     });
+//   }
 
-  private View getView() {
-    try {
-      return (View) webView.getClass().getMethod("getView").invoke(webView);
-    } catch (Exception e) {
-      return (View) webView;
-    }
-  }
+//   private View getView() {
+//     try {
+//       return (View) webView.getClass().getMethod("getView").invoke(webView);
+//     } catch (Exception e) {
+//       return (View) webView;
+//     }
+//   }
 
 
 }
