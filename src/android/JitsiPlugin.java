@@ -47,7 +47,7 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
     // in AndroidManifest.xml. This plugin does not declare it, but others may and so we must
     // check the package info to determine if the permission is present.
 
-    //checkPermission();
+    checkPermission();
 
     if (action.equals("loadURL")) {
       String url = args.getString(0);
@@ -108,14 +108,12 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {       
         Context context = cordova.getActivity();
-        
+        //view = new JitsiMeetView(context);
       //  Initialize default options for Jitsi Meet conferences.
         URL serverURL;
-        try {
-          view = new JitsiMeetView(context);
+        try {          
             serverURL = new URL(url);
-        } catch (Exception e) {
-//           MalformedURLException e,
+        } catch (MalformedURLException e) {
             e.printStackTrace();
             throw new RuntimeException("Invalid server URL!");
         }
@@ -125,7 +123,7 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
           .setWelcomePageEnabled(false)
           .build();
                 
-        view.join(options);
+//         view.join(options);
 //         setJitsiListener(view, callbackContext);
 //         view.setWelcomePageEnabled(false);
 //         Bundle config = new Bundle();
@@ -135,8 +133,8 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
 //         urlObject.putBundle("config", config);
 //         urlObject.putString("url", url);
 //         view.loadURLObject(urlObject);
-            cordova.getActivity().setContentView(view);
-//         JitsiMeetActivity.launch(cordova.getActivity(), options);
+//             cordova.getActivity().setContentView(view);
+        JitsiMeetActivity.launch(cordova.getActivity(), options);
       }
     });
   }
