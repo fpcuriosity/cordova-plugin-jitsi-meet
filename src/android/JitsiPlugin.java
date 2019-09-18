@@ -123,7 +123,8 @@ public class JitsiPlugin extends CordovaPlugin {
           .setWelcomePageEnabled(false)
           .build();
         
-        view.join(options);
+        JitsiMeet.setDefaultConferenceOptions(defaultOptions);
+        //view.join(options);
 //         setJitsiListener(view, callbackContext);
 //         view.setWelcomePageEnabled(false);
 //         Bundle config = new Bundle();
