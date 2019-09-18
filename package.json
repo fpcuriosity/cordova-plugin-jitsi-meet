@@ -1,10 +1,10 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.3",
   "name": "cordova-plugin-jitsi",
   "cordova_name": "JitsiPlugin",
   "description": "This plugin allows Jitsi Webrtc",
-  "license": "Auris",
-  "repo": "https://github.com/gaganinvic/cordova-plugin-jitsi-meet",
+  "license": "Med Zghal",
+  "repo": "https://github.com/MedZghal/cordova-plugin-jitsi-meet",
   "issue": "",
   "keywords": [],
   "platforms": [
