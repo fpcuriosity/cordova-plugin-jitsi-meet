@@ -17,7 +17,7 @@ import android.os.Bundle;
 
 import org.jitsi.meet.sdk.JitsiMeetView;
 import org.jitsi.meet.sdk.JitsiMeetViewListener;
-
+import org.jitsi.meet.sdk.ReactActivityLifecycleCallbacks;
 import android.view.View;
 
 import org.apache.cordova.CordovaWebView;
@@ -26,7 +26,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
-public class JitsiPlugin extends CordovaPlugin {
+public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInterface {
   private JitsiMeetView view;
   private static final String TAG = "cordova-plugin-jitsi";
 
@@ -101,15 +101,25 @@ public class JitsiPlugin extends CordovaPlugin {
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {
         view = new JitsiMeetView(cordova.getActivity());
-        setJitsiListener(view, callbackContext);
-        view.setWelcomePageEnabled(false);
-        Bundle config = new Bundle();
-        config.putBoolean("startWithAudioMuted", false);
-        config.putBoolean("startWithVideoMuted", false);
-        Bundle urlObject = new Bundle();
-        urlObject.putBundle("config", config);
-        urlObject.putString("url", url);
-        view.loadURLObject(urlObject);
+        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+          .setServerURL(new URL(url))
+          .setRoom(key)
+          .setAudioMuted(false)
+          .setVideoMuted(false)
+          .setAudioOnly(false)
+          .setWelcomePageEnabled(false)
+          .build();
+        
+        view.join(options);
+//         setJitsiListener(view, callbackContext);
+//         view.setWelcomePageEnabled(false);
+//         Bundle config = new Bundle();
+//         config.putBoolean("startWithAudioMuted", false);
+//         config.putBoolean("startWithVideoMuted", false);
+//         Bundle urlObject = new Bundle();
+//         urlObject.putBundle("config", config);
+//         urlObject.putString("url", url);
+//         view.loadURLObject(urlObject);
         cordova.getActivity().setContentView(view);
       }
     });
