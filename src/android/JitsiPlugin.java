@@ -186,27 +186,27 @@ public class JitsiPlugin extends CordovaPlugin {
 //     });
 //   }
 
-//   private void destroy(final CallbackContext callbackContext) {
-//     cordova.getActivity().runOnUiThread(new Runnable() {
-//       public void run() {
-//         view.dispose();
-//         view = null;
-//         JitsiMeetView.onHostDestroy(cordova.getActivity());
-//         cordova.getActivity().setContentView(getView());
-//         PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "DESTROYED");
-//         pluginResult.setKeepCallback(true);
-//         callbackContext.sendPluginResult(pluginResult);
-//       }
-//     });
-//   }
+  private void destroy(final CallbackContext callbackContext) {
+    cordova.getActivity().runOnUiThread(new Runnable() {
+      public void run() {
+        view.dispose();
+        view = null;
+        JitsiMeetView.onHostDestroy(cordova.getActivity());
+        cordova.getActivity().setContentView(getView());
+        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "DESTROYED");
+        pluginResult.setKeepCallback(true);
+        callbackContext.sendPluginResult(pluginResult);
+      }
+    });
+  }
 
-//   private View getView() {
-//     try {
-//       return (View) webView.getClass().getMethod("getView").invoke(webView);
-//     } catch (Exception e) {
-//       return (View) webView;
-//     }
-//   }
+  private View getView() {
+    try {
+      return (View) webView.getClass().getMethod("getView").invoke(webView);
+    } catch (Exception e) {
+      return (View) webView;
+    }
+  }
 
 
 }
