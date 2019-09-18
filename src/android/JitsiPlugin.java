@@ -104,23 +104,24 @@ public class JitsiPlugin extends CordovaPlugin {
 
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {
-        view = new JitsiMeetView(cordova.getActivity());
-        // Initialize default options for Jitsi Meet conferences.
-//         URL serverURL;
-//         try {
-//             serverURL = new URL(url);
-//         } catch (MalformedURLException e) {
-//             e.printStackTrace();
-//             throw new RuntimeException("Invalid server URL!");
-//         }
+//         view = new JitsiMeetView(cordova.getActivity());
+        Initialize default options for Jitsi Meet conferences.
+        URL serverURL;
+        try {
+            serverURL = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Invalid server URL!");
+        }
         
-//         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-//           .setRoom("https://meet.jit.si/test123")
-//           .setAudioMuted(false)
-//           .setVideoMuted(false)
-//           .setAudioOnly(false)
-//           .setWelcomePageEnabled(false)
-//           .build();
+        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+          .setServerURL(serverURL)
+          .setRoom(key)
+          .setAudioMuted(false)
+          .setVideoMuted(true)
+          .setAudioOnly(false)
+          .setWelcomePageEnabled(false)
+          .build();
                 
 //         view.join(options);
 //         setJitsiListener(view, callbackContext);
@@ -132,7 +133,8 @@ public class JitsiPlugin extends CordovaPlugin {
 //         urlObject.putBundle("config", config);
 //         urlObject.putString("url", url);
 //         view.loadURLObject(urlObject);
-        cordova.getActivity().setContentView(view);
+        //cordova.getActivity().setContentView(view);
+        JitsiMeetActivity.launch(cordova.getActivity(), options);
       }
     });
   }
