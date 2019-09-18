@@ -226,51 +226,59 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
     }
   }
 
-    @Override
-    public void onBackPressed() {
-        JitsiMeetActivityDelegate.onBackPressed();
-    }
+  @Override
+  public void onBackPressed() {
+      JitsiMeetActivityDelegate.onBackPressed();
+  }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
 
-        view = new JitsiMeetView(this);
-        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-            .setRoom("https://meet.jit.si/test123")
-            .build();
-        view.join(options);
+      view = new JitsiMeetView(this);
+      JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+          .setRoom("https://meet.jit.si/test123")
+          .build();
+      view.join(options);
 
-        setContentView(view);
-    }
+      setContentView(view);
+  }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+  @Override
+  protected void onDestroy() {
+      super.onDestroy();
 
-        view.dispose();
-        view = null;
+      view.dispose();
+      view = null;
 
-        JitsiMeetActivityDelegate.onHostDestroy(this);
-    }
+      JitsiMeetActivityDelegate.onHostDestroy(this);
+  }
 
-    @Override
-    public void onNewIntent(Intent intent) {
-        JitsiMeetActivityDelegate.onNewIntent(intent);
-    }
+  @Override
+  public void onNewIntent(Intent intent) {
+      JitsiMeetActivityDelegate.onNewIntent(intent);
+  }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+  @Override
+  protected void onResume() {
+      super.onResume();
 
-        JitsiMeetActivityDelegate.onHostResume(this);
-    }
+      JitsiMeetActivityDelegate.onHostResume(this);
+  }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
+  @Override
+  protected void onStop() {
+      super.onStop();
 
-        JitsiMeetActivityDelegate.onHostPause(this);
+      JitsiMeetActivityDelegate.onHostPause(this);
+  }
+  
+  @Override
+    public void onRequestPermissionsResult(
+            final int requestCode,
+            final String[] permissions,
+            final int[] grantResults) {
+        JitsiMeetActivityDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
