@@ -32,7 +32,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 
 public class JitsiPlugin extends CordovaPlugin {
   private JitsiMeetView view;
-  private Context context;
   private static final String TAG = "cordova-plugin-jitsi";
 
   final static String[] permissions = { Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO };
@@ -108,9 +107,8 @@ public class JitsiPlugin extends CordovaPlugin {
         callbackContext.sendPluginResult(pluginResult);
     
     cordova.getActivity().runOnUiThread(new Runnable() {
-      public void run() {
-        context = cordova.getActivity();
-        view = new JitsiMeetView(context);
+      public void run() {       
+        view = new JitsiMeetView(cordova.getActivity());
       //  Initialize default options for Jitsi Meet conferences.
         URL serverURL;
         try {
