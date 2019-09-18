@@ -22,6 +22,7 @@ import org.jitsi.meet.sdk.JitsiMeet;
 import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 import org.jitsi.meet.sdk.JitsiMeetActivityDelegate;
+import org.jitsi.meet.sdk.JitsiMeetActivityInterface;
 import android.view.View;
 
 import org.apache.cordova.CordovaWebView;
@@ -30,7 +31,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
-public class JitsiPlugin extends CordovaPlugin {
+public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInterface{
   private JitsiMeetView view;
   private static final String TAG = "cordova-plugin-jitsi";
 
@@ -108,7 +109,7 @@ public class JitsiPlugin extends CordovaPlugin {
     
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {       
-        view = new JitsiMeetView(cordova.getActivity().getApplicationContext());
+//         view = new JitsiMeetView(cordova.getActivity().getApplicationContext());
       //  Initialize default options for Jitsi Meet conferences.
         URL serverURL;
         try {
@@ -225,4 +226,67 @@ public class JitsiPlugin extends CordovaPlugin {
     }
   }
 
+  @Override
+    protected void onActivityResult(
+            int requestCode,
+            int resultCode,
+            Intent data) {
+        JitsiMeetActivityDelegate.onActivityResult(
+                this, requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+        JitsiMeetActivityDelegate.onBackPressed();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        view = new JitsiMeetView(this);
+        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+            .setRoom("https://meet.jit.si/test123")
+            .build();
+        view.join(options);
+
+        setContentView(view);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        view.dispose();
+        view = null;
+
+        JitsiMeetActivityDelegate.onHostDestroy(this);
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        JitsiMeetActivityDelegate.onNewIntent(intent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(
+            final int requestCode,
+            final String[] permissions,
+            final int[] grantResults) {
+        JitsiMeetActivityDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        JitsiMeetActivityDelegate.onHostResume(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        JitsiMeetActivityDelegate.onHostPause(this);
+    }
 }
