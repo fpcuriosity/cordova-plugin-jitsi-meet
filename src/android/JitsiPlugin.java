@@ -115,16 +115,14 @@ public class JitsiPlugin extends CordovaPlugin {
         }
         
         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-          .setServerURL(serverURL)
-          .setRoom(key)
+          .setRoom("https://meet.jit.si/test123")
           .setAudioMuted(false)
           .setVideoMuted(false)
           .setAudioOnly(false)
           .setWelcomePageEnabled(false)
           .build();
-        
-        JitsiMeet.setDefaultConferenceOptions(options);
-        //view.join(options);
+                
+        view.join(options);
 //         setJitsiListener(view, callbackContext);
 //         view.setWelcomePageEnabled(false);
 //         Bundle config = new Bundle();
