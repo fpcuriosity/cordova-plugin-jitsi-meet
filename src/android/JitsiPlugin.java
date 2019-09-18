@@ -103,10 +103,6 @@ public class JitsiPlugin extends CordovaPlugin {
 
   private void loadURL(final String url, final String key, final CallbackContext callbackContext) {
     Log.e(TAG, "loadURL called : "+url);
-
-    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "INIT"+url+"/"+key);
-        pluginResult.setKeepCallback(true);
-        callbackContext.sendPluginResult(pluginResult);
     
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {       
@@ -123,16 +119,16 @@ public class JitsiPlugin extends CordovaPlugin {
             throw new RuntimeException("Invalid server URL!",e.getMessage());
         }
         
-//         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-//           .setServerURL(serverURL)
-//           .setRoom(url)
-//           .setAudioMuted(false)
-//           .setVideoMuted(true)
-//           .setAudioOnly(false)
-//           .setWelcomePageEnabled(false)
-//           .build();
+        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+          .setServerURL(serverURL)
+          .setRoom(url)
+          .setAudioMuted(false)
+          .setVideoMuted(true)
+          .setAudioOnly(false)
+          .setWelcomePageEnabled(false)
+          .build();
                 
-//         view.join(options);
+        view.join(options);
 //         setJitsiListener(view, callbackContext);
 //         view.setWelcomePageEnabled(false);
 //         Bundle config = new Bundle();
@@ -142,7 +138,7 @@ public class JitsiPlugin extends CordovaPlugin {
 //         urlObject.putBundle("config", config);
 //         urlObject.putString("url", url);
 //         view.loadURLObject(urlObject);
-        //cordova.getActivity().setContentView(view);
+            context.setContentView(view);
 //         JitsiMeetActivity.launch(cordova.getActivity(), options);
       }
     });
