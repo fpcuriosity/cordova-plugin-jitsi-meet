@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import java.util.Map;
+import java.net.MalformedURLException;
 import java.net.URL;
 import android.os.Bundle;
 
@@ -104,8 +105,17 @@ public class JitsiPlugin extends CordovaPlugin {
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {
         view = new JitsiMeetView(cordova.getActivity());
+        // Initialize default options for Jitsi Meet conferences.
+        URL serverURL;
+        try {
+            serverURL = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Invalid server URL!");
+        }
+        
         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-          .setServerURL(new URL(url))
+          .setServerURL(serverURL)
           .setRoom(key)
           .setAudioMuted(false)
           .setVideoMuted(false)
