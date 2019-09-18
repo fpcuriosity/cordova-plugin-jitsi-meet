@@ -106,23 +106,23 @@ public class JitsiPlugin extends CordovaPlugin {
       public void run() {
         view = new JitsiMeetView(cordova.getActivity());
         // Initialize default options for Jitsi Meet conferences.
-        URL serverURL;
-        try {
-            serverURL = new URL(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Invalid server URL!");
-        }
+//         URL serverURL;
+//         try {
+//             serverURL = new URL(url);
+//         } catch (MalformedURLException e) {
+//             e.printStackTrace();
+//             throw new RuntimeException("Invalid server URL!");
+//         }
         
-        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-          .setRoom("https://meet.jit.si/test123")
-          .setAudioMuted(false)
-          .setVideoMuted(false)
-          .setAudioOnly(false)
-          .setWelcomePageEnabled(false)
-          .build();
+//         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+//           .setRoom("https://meet.jit.si/test123")
+//           .setAudioMuted(false)
+//           .setVideoMuted(false)
+//           .setAudioOnly(false)
+//           .setWelcomePageEnabled(false)
+//           .build();
                 
-        view.join(options);
+//         view.join(options);
 //         setJitsiListener(view, callbackContext);
 //         view.setWelcomePageEnabled(false);
 //         Bundle config = new Bundle();
