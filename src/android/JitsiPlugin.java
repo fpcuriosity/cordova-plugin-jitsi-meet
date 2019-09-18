@@ -108,7 +108,8 @@ public class JitsiPlugin extends CordovaPlugin {
     
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {
-        view = new JitsiMeetView(this);
+        Context context = cordova.getActivity();
+        view = new JitsiMeetView(context);
       //  Initialize default options for Jitsi Meet conferences.
         URL serverURL;
         try {
