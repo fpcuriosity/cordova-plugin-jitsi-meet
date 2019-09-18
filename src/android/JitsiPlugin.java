@@ -240,5 +240,10 @@ public class JitsiPlugin extends CordovaPlugin implements JitsiMeetActivityInter
     public boolean shouldShowRequestPermissionRationale(String permissions) {
         return true;
     }
-
+  
+    @Override
+    public int checkSelfPermission(String permission) {
+        return 0;
+    }
+  
 }
