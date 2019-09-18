@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 import android.content.Intent;
+import android.content.Context;
 import java.util.Map;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -109,24 +110,25 @@ public class JitsiPlugin extends CordovaPlugin {
     
     cordova.getActivity().runOnUiThread(new Runnable() {
       public void run() {       
-        view = new JitsiMeetView(cordova.getActivity());
+        Context context = cordova.getActivity();
+        view = new JitsiMeetView(context);
       //  Initialize default options for Jitsi Meet conferences.
-        URL serverURL;
-        try {
-            serverURL = new URL(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Invalid server URL!");
-        }
+//         URL serverURL;
+//         try {
+//             serverURL = new URL(url);
+//         } catch (MalformedURLException e) {
+//             e.printStackTrace();
+//             throw new RuntimeException("Invalid server URL!");
+//         }
         
-        JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-          .setServerURL(serverURL)
-          .setRoom(url)
-          .setAudioMuted(false)
-          .setVideoMuted(true)
-          .setAudioOnly(false)
-          .setWelcomePageEnabled(false)
-          .build();
+//         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+//           .setServerURL(serverURL)
+//           .setRoom(url)
+//           .setAudioMuted(false)
+//           .setVideoMuted(true)
+//           .setAudioOnly(false)
+//           .setWelcomePageEnabled(false)
+//           .build();
                 
 //         view.join(options);
 //         setJitsiListener(view, callbackContext);
@@ -139,7 +141,7 @@ public class JitsiPlugin extends CordovaPlugin {
 //         urlObject.putString("url", url);
 //         view.loadURLObject(urlObject);
         //cordova.getActivity().setContentView(view);
-        JitsiMeetActivity.launch(cordova.getActivity(), options);
+//         JitsiMeetActivity.launch(cordova.getActivity(), options);
       }
     });
   }
